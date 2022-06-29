@@ -27,7 +27,7 @@ function addToCollection(title, artist, yearPublished){
 
 console.log('test addToCollection 1', addToCollection('Cheese', 'Stromae', 2010));
 console.log(collection);
-console.log('test addToCollection 2', addToCollection('Sainthood', 'Tegan and Sara', 2009));
+console.log('test addToCollection 2', addToCollection('Racine Carree', 'Stromae', 2013));
 console.log(collection);
 console.log('test addToCollection 3', addToCollection('Coconut Oil', 'Lizzo', 2016));
 console.log(collection);
@@ -35,7 +35,7 @@ console.log('test addToCollection 4', addToCollection('Rumours', 'Fleetwood Mac'
 console.log(collection);
 console.log('test addToCollection 5', addToCollection('Heard It In a Past Life', 'Maggie Rogers', 2019));
 console.log(collection);
-console.log('test addToCollection 6', addToCollection('Chris', 'Christine And the Queens', 2018));
+console.log('test addToCollection 6', addToCollection('Chris', 'Christine And the Queens', 2019));
 console.log(collection);
 
 /**
@@ -55,3 +55,29 @@ function showCollection(collectionArray){
 // showCollection function test
 
 showCollection(collection);
+
+/**
+ * Create array to hold albums by input artist and return that array
+ * @param {string} artistInput Input artist name
+ * @return Array containing albums by input artist, empty array if no matches
+ */
+
+function findByArtist(artistInput){
+    console.log('in findByArtist:', artistInput);
+    const albumsByArtist = [];
+    for(let i=0; i<collection.length; i +=1){
+        if(artistInput === collection[i].artist){
+            albumsByArtist.push(collection[i]);
+        };
+    };
+    return albumsByArtist;
+};
+
+// findByArtist function test
+
+console.log('test findbyArtist:', findByArtist('Stromae'));
+console.log('test findbyArtist:', findByArtist('Fleetwood Mac'));
+console.log('test findbyArtist:', findByArtist('Beyonce'));
+console.log('test findbyArtist:', findByArtist('Tegan and Sara'));
+console.log('test findbyArtist:', findByArtist('Maggie Rogers'));
+console.log('test findbyArtist:', findByArtist('Kings of Leon'));
