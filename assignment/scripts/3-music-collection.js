@@ -25,16 +25,33 @@ function addToCollection(title, artist, yearPublished){
 
 // addToCollection function test
 
-console.log('test addToCollection', addToCollection('Cheese', 'Stromae', 2010));
+console.log('test addToCollection 1', addToCollection('Cheese', 'Stromae', 2010));
 console.log(collection);
-console.log('test addToCollection', addToCollection('Sainthood', 'Tegan and Sara', 2009));
+console.log('test addToCollection 2', addToCollection('Sainthood', 'Tegan and Sara', 2009));
 console.log(collection);
-console.log('test addToCollection', addToCollection('Coconut Oil', 'Lizzo', 2016));
+console.log('test addToCollection 3', addToCollection('Coconut Oil', 'Lizzo', 2016));
 console.log(collection);
-console.log('test addToCollection', addToCollection('Rumours', 'Fleetwood Mac', 1977));
+console.log('test addToCollection 4', addToCollection('Rumours', 'Fleetwood Mac', 1977));
 console.log(collection);
-console.log('test addToCollection', addToCollection('Heard It In a Past Life', 'Maggie Rogers', 2019));
+console.log('test addToCollection 5', addToCollection('Heard It In a Past Life', 'Maggie Rogers', 2019));
 console.log(collection);
-console.log('test addToCollection', addToCollection('Chris', 'Christine And the Queens', 2018));
+console.log('test addToCollection 6', addToCollection('Chris', 'Christine And the Queens', 2018));
 console.log(collection);
 
+/**
+ * Displays the collection info in the input array
+ * @param {[]} collectionArray Input array to display
+ * @return nothing is returned, input array contents is displayed in the console
+ */
+
+function showCollection(collectionArray){
+    console.log('in showCollection:', collectionArray);
+    console.log('length of array:', collectionArray.length);
+    for(let i=0; i<collectionArray.length; i +=1){
+        console.log(`${collectionArray[i].title} by ${collectionArray[i].artist}, published in ${collectionArray[i].year}`);
+    };
+};
+
+// showCollection function test
+
+showCollection(collection);
