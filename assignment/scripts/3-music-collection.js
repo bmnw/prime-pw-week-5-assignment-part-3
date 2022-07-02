@@ -97,7 +97,8 @@ console.log('test findbyArtist:', findByArtist('Kings of Leon'));
 function search(searchInput){
     console.log('in search:', searchInput);
     const resultsArray = [];
-    if(searchInput === undefined){
+    // in the following conditional, when I had (searchInput === undefined || searchInput === {}), it wouldn't push the collection if the input was {}. why not?
+    if(searchInput === undefined || Object.entries(searchInput).length === 0){
         resultsArray.push(collection);
         console.log('empty input results:', resultsArray);
         return resultsArray;
@@ -122,4 +123,5 @@ function search(searchInput){
 search({artist: 'Stromae'});
 search({artist: 'Stromae', year: 2019});
 search({artist: 'Lizzo', title: 'Heard It In a Past Life', year: 1977});
-search();
+console.log('no input test:', search());
+console.log('empty object input test', search({}));
