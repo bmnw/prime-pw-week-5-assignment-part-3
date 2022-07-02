@@ -81,3 +81,45 @@ console.log('test findbyArtist:', findByArtist('Beyonce'));
 console.log('test findbyArtist:', findByArtist('Tegan and Sara'));
 console.log('test findbyArtist:', findByArtist('Maggie Rogers'));
 console.log('test findbyArtist:', findByArtist('Kings of Leon'));
+
+
+// Stretch goals
+
+/**
+ * Searches collection for albums that match the input object properties
+ * @param {object} searchInput Input search properties as an object
+ * @return Returns a new array containing albums in collection that match the input object properties, returns empty array if no matches, returns entire collection if input is empty.
+ */
+
+// album object properties: 
+// {artist, title, year}
+
+function search(searchInput){
+    console.log('in search:', searchInput);
+    const resultsArray = [];
+    if(searchInput === undefined){
+        resultsArray.push(collection);
+        console.log('empty input results:', resultsArray);
+        return resultsArray;
+    } // end if input is empty
+    for(let i = 0; i<collection.length; i += 1){
+        if(searchInput.artist === collection[i].artist){
+            resultsArray.push(collection[i]);
+        } // end checking if input artist has a match
+        if(searchInput.title === collection[i].title){
+            resultsArray.push(collection[i]);
+        } // end checking if input title has a match
+        if(searchInput.year === collection[i].year){
+            resultsArray.push(collection[i]);
+        } // end checking if input year has a match
+    }
+    console.log('search results:', resultsArray);
+    return resultsArray;
+}
+
+// search function test
+
+search({artist: 'Stromae'});
+search({artist: 'Stromae', year: 2019});
+search({artist: 'Lizzo', title: 'Heard It In a Past Life', year: 1977});
+search();
