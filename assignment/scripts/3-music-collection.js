@@ -191,8 +191,7 @@ console.log('matches artist:', searchTwo({artist: 'Maggie Rogers'}));
 console.log('empty object test:', searchTwo({}));
 console.log('no input test:', searchTwo());
 
-// tracks updates to functions
-
+// album tracks updates to functions
 // addToCollectionUpdate
 
 /**
@@ -205,7 +204,7 @@ console.log('no input test:', searchTwo());
  */
 
  function addToCollectionUpdate(title, artist, yearPublished, tracksArray){
-    console.log('in addToCollection:', title, artist, yearPublished);
+    console.log('in addToCollectionUpdate:', title, artist, yearPublished, tracksArray);
     const album = {
         title: title,
         artist: artist,
@@ -227,18 +226,17 @@ console.log(collection);
 // searchUpdate
 
 /**
- * Searches collection for albums that match the input object properties, including track name
+ * Searches collection for albums that match the input object properties, including trackname
  * @param {object} searchInput Input search properties as an object
  * @return Returns a new array containing albums in collection that match the input object properties, returns empty array if no matches, returns entire collection if input is empty.
  */
 
 // album object properties: 
-// {artist, title, year}
+// {artist, title, year, tracks}
 
 function searchUpdate(searchInput){
-    console.log('in search:', searchInput);
+    console.log('in searchUpdate:', searchInput);
     const resultsArray = [];
-    // in the following conditional, when I had (searchInput === undefined || searchInput === {}), it wouldn't push the collection if the input was {}. why not?
     if(searchInput === undefined || Object.entries(searchInput).length === 0){
         resultsArray.push(collection);
         console.log('empty obj or no input results:', resultsArray);
@@ -257,9 +255,13 @@ function searchUpdate(searchInput){
             resultsArray.push(collection[i]);
             console.log('year match');
         } // end checking if input year has a match
-        if(searchInput.trackname === collection[i].tracks.trackname){
-            resultsArray.push(collection[i]);
-            console.log('trackname match');
+        if(collection[i].hasOwnProperty('tracks') === true){
+            for(let j=0; j<collection[i].tracks.length; j += 1){
+                if(searchInput === collection[i].tracks[j].trackname){
+                    resultsArray.push(collection[i]);
+                    console.log('trackname match');
+                }
+            } 
         }
     }
     console.log('search results:', resultsArray);
@@ -268,4 +270,6 @@ function searchUpdate(searchInput){
 
 // searchUpdate test
 
-console.log('search by On Directing:', searchUpdate({trackname: 'On Directing'}));
+console.log('search by On Directing:', searchUpdate([{trackname: 'On Directing'}])); // not working
+
+
