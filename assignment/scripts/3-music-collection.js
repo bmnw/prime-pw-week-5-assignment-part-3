@@ -100,7 +100,7 @@ function search(searchInput){
     // in the following conditional, when I had (searchInput === undefined || searchInput === {}), it wouldn't push the collection if the input was {}. why not?
     if(searchInput === undefined || Object.entries(searchInput).length === 0){
         resultsArray.push(collection);
-        console.log('empty input results:', resultsArray);
+        console.log('empty obj or no input results:', resultsArray);
         return resultsArray;
     } // end if input is empty
     for(let i = 0; i<collection.length; i += 1){
@@ -125,3 +125,69 @@ search({artist: 'Stromae', year: 2019});
 search({artist: 'Lizzo', title: 'Heard It In a Past Life', year: 1977});
 console.log('no input test:', search());
 console.log('empty object input test', search({}));
+
+/**
+ * Creates and return a new array containing the albums that match all of the input object properties
+ * @param {object} matchInput Input object with properties to search for
+ * @return Returns new array containing albums that match all input properties, returns empty array if no input or if input object is empty.
+ */
+
+function searchTwo(matchInput){
+    console.log('in searchTwo:', matchInput);
+    const perfectMatch = [];
+    if(matchInput === undefined || Object.entries(matchInput).length === 0){
+        perfectMatch.push(collection);
+        console.log('empty obj or no input results:', perfectMatch);
+        return perfectMatch;
+    } // end if input is empty
+    for(let i=0; i<collection.length; i += 1){
+        // order conditional from most to least complex so the truest condition is acted on.
+        if(collection[i].artist === matchInput.artist && collection[i].title === matchInput.title && collection[i].year === matchInput.year){
+            perfectMatch.push(collection[i]);
+            console.log('artist, title, year match');
+            break;
+        } // end A, T, Y match
+        else if(collection[i].artist === matchInput.artist && collection[i].title === matchInput.title){
+            perfectMatch.push(collection[i]);
+            console.log('artist, title match');
+            break;
+        } // end A, T match
+        else if(collection[i].artist === matchInput.artist && collection[i].year === matchInput.year){
+            perfectMatch.push(collection[i]);
+            console.log('artist, year match');
+            break;
+        } // end A, Y match
+        else if(collection[i].title === matchInput.title && collection[i].year === matchInput.year){
+            perfectMatch.push(collection[i]);
+            console.log('year, title match');
+            break;
+        } // end Y, T match
+        else if(collection[i].artist === matchInput.artist){
+            perfectMatch.push(collection[i]);
+            console.log('artist matches');
+        } // end A match
+        else if(collection[i].title === matchInput.title){
+            perfectMatch.push(collection[i]);
+            console.log('title matches');
+        } // end T match
+        else if(collection[i].year === matchInput.year){
+            perfectMatch.push(collection[i]);
+            console.log('year matches');
+        } // end Y match
+    }
+    console.log('perfect match results:', perfectMatch);
+    return perfectMatch;
+}
+
+// searchTwo function test
+
+console.log('artist, title, year match', searchTwo({artist: 'Stromae', title: 'Cheese', year: 2010}));
+console.log('title and year match', searchTwo({title: 'Rumours', year: 1977}));
+console.log('artist, title match', searchTwo({artist: 'Christine And the Queens', title: 'Chris'}));
+console.log('matches title', searchTwo({title: 'Coconut Oil'}));
+console.log('matches year:', searchTwo({year: 2019}));
+console.log('matches artist:', searchTwo({artist: 'Stromae'}));
+console.log('matches artist:', searchTwo({artist: 'Maggie Rogers'}));
+console.log('empty object test:', searchTwo({}));
+console.log('no input test:', searchTwo());
+
