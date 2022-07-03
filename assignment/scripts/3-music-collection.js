@@ -271,5 +271,38 @@ function searchUpdate(searchInput){
 // searchUpdate test
 
 console.log('search by On Directing:', searchUpdate({trackname: 'On Directing'}));
+console.log('search by Stromae and On Directing:', searchUpdate({artist: 'Stromae', trackname: 'On Directing'}));
+console.log('search by 2019, Alexander Hamilton, On Directing:', searchUpdate({year: 2019, trackname: 'Alexander Hamilton', trackname: 'On Directing'})); // doesn't look for all trackname matches, just the first one it finds, unsure quite how to do this?
 
+// showCollectionUpdate
+
+/**
+ * Displays the collection info in the input array, including tracknames and durations
+ * @param {[]} collectionArray Input array to display
+ * @return nothing is returned, input array contents is displayed in the console
+ */
+
+ function showCollectionUpdate(collectionArray){
+    console.log('in showCollectionUpdate:', collectionArray);
+    console.log('length of array:', collectionArray.length);
+    for(let i=0; i<collectionArray.length; i +=1){
+        if(collection[i].hasOwnProperty('tracks') === false){
+            console.log(`${collectionArray[i].title} by ${collectionArray[i].artist}, published in ${collectionArray[i].year}`);
+        } 
+        if(collection[i].hasOwnProperty('tracks') === true){
+            let counter = 1;
+            console.log(`${collectionArray[i].title} by ${collectionArray[i].artist}, published in ${collectionArray[i].year}:`);
+            for(let j=0; j<collectionArray[i].tracks.length; j += 1){
+                console.log(`${counter}. ${collectionArray[i].tracks[j].trackname}: ${collectionArray[i].tracks[j].duration}`);
+                counter += 1;
+            }
+        }
+    };
+};
+
+// showCollectionUpdate test
+
+console.log(collection[7].tracks[0] + 1);
+
+console.log('collection with tracks listed:', showCollectionUpdate(collection));
 
