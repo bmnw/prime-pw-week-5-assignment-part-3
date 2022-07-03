@@ -257,7 +257,7 @@ function searchUpdate(searchInput){
         } // end checking if input year has a match
         if(collection[i].hasOwnProperty('tracks') === true){
             for(let j=0; j<collection[i].tracks.length; j += 1){
-                if(searchInput === collection[i].tracks[j].trackname){
+                if(searchInput.trackname === collection[i].tracks[j].trackname){
                     resultsArray.push(collection[i]);
                     console.log('trackname match');
                 }
@@ -270,6 +270,6 @@ function searchUpdate(searchInput){
 
 // searchUpdate test
 
-console.log('search by On Directing:', searchUpdate([{trackname: 'On Directing'}])); // not working
+console.log('search by On Directing:', searchUpdate({trackname: 'On Directing'}));
 
 
