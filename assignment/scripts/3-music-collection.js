@@ -272,7 +272,7 @@ function searchUpdate(searchInput){
 
 console.log('search by On Directing:', searchUpdate({trackname: 'On Directing'}));
 console.log('search by Stromae and On Directing:', searchUpdate({artist: 'Stromae', trackname: 'On Directing'}));
-console.log('search by 2019, Alexander Hamilton, On Directing:', searchUpdate({year: 2019, trackname: 'Alexander Hamilton', trackname: 'On Directing'})); // doesn't look for all trackname matches, just the first one it finds, unsure quite how to do this?
+console.log('search by 2019, Alexander Hamilton, On Directing:', searchUpdate({year: 2019, trackname: 'Alexander Hamilton', trackname: 'On Directing'})); // doesn't look for all trackname matches, just the first one it finds. how would make it check all of the input tracknames for a match?
 
 // showCollectionUpdate
 
@@ -302,7 +302,11 @@ console.log('search by 2019, Alexander Hamilton, On Directing:', searchUpdate({y
 
 // showCollectionUpdate test
 
-console.log(collection[7].tracks[0] + 1);
+console.log('collection with tracks listed, as applicable:', showCollectionUpdate(collection));
 
-console.log('collection with tracks listed:', showCollectionUpdate(collection));
+// putting it all together
 
+console.log('adding to collection:', addToCollectionUpdate('Future Nostalgia', 'Dua Lipa', 2020, [{trackname: 'Don\'t Start Now', duration: '3:03'}, {trackname: 'Levitating', duration: '3:24'}]));
+console.log(collection);
+showCollectionUpdate(collection);
+searchUpdate({artist: 'Dua Lipa'});
