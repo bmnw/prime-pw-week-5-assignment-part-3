@@ -262,7 +262,7 @@ function searchUpdate(searchInput){
                     console.log('trackname match');
                 }
             } 
-        }
+        } // end checking if input trackname has a match
     }
     console.log('search results:', resultsArray);
     return resultsArray;
@@ -270,6 +270,8 @@ function searchUpdate(searchInput){
 
 // searchUpdate test
 
+console.log('EMPTY input test', searchUpdate());
+console.log('empty object input test', searchUpdate());
 console.log('search by On Directing:', searchUpdate({trackname: 'On Directing'}));
 console.log('search by Stromae and On Directing:', searchUpdate({artist: 'Stromae', trackname: 'On Directing'}));
 console.log('search by 2019, Alexander Hamilton, On Directing:', searchUpdate({year: 2019, trackname: 'Alexander Hamilton', trackname: 'On Directing'})); // doesn't look for all trackname matches, just the first one it finds. how would make it check all of the input tracknames for a match?
